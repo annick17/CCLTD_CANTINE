@@ -18,9 +18,10 @@ from django.urls import path, include
 
 from django.conf import settings 
 from django.conf.urls.static import static 
+from cantine_scolaire.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 
 
-from django.contrib.auth import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +29,6 @@ urlpatterns = [
     
 ]
 
-if settings.DEBUG: 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if DEBUG: 
+    urlpatterns += static(STATIC_URL, document_root = STATIC_ROOT)
+    urlpatterns += static(MEDIA_URL, document_root = MEDIA_ROOT)
