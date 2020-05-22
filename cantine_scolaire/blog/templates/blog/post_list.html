@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
+<div>
+
+    <a href="{% url 'post_new' %}" class="top-menu">Ajouter</a>
+</div>
+
+<div class="post">
+    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h2>
+    <p><i>Publié par : {{ post.auteur|linebreaksbr }}</i></p>
+    <img src="{{ post.image.url }}" alt="photo recette">
+    <p>Publié le : {{ post.date_de_publication }}</p>
+    <p>{{ post.accroche|linebreaksbr }}
+        <a href="{% url 'post_detail' pk=post.pk %}"></a><i>...En savoir plus...</i></a>
+    </p>
+</div>{% endfor %} {% endblock %}

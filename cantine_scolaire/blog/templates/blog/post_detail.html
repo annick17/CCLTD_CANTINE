@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %} {% block content %}
+<div class="post">
+
+    <h2>{{ post.titre }}</h2>
+    <p><i>Publié par : {{ post.auteur|linebreaksbr }}</i></p>
+    <img src="{{ post.image.url }}" alt="photo recette">
+    <p>{{ post.texte|linebreaksbr }}</p>
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">Modifier</a>
+    <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}">Supprimer</a> {% endif %}{% if post.date_de_publication %}
+    <div class="date">Date de création : {{ post.date_de_publication }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
