@@ -4,20 +4,26 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
+def login(request):
+    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
+    return render(request, 'registration/login.html', {})
 
+@login_required
 def post_list(request):
     posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-
+@login_required
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-
+@login_required
 def post_new(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -29,7 +35,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
-
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -44,22 +50,8 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
-def post_draft_list(request):
-    posts = Post.objects.filter(date_de_publication__isnull=True).order_by('created_date')
-    return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
-
-def post_publish(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    post.publish()
-    return redirect('post_detail', pk=pk)
-
-def publish(self):
-    self.date_de_publication = timezone.now()
-    self.save()
-
-
-
+@login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()

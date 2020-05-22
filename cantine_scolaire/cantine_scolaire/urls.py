@@ -21,11 +21,13 @@ from django.conf.urls.static import static
 from cantine_scolaire.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 
 
-
+from django.contrib.auth import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.LoginView.as_view(), name='login'),
     path('', include('blog.urls')),
+    
     
 ]
 
