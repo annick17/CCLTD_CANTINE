@@ -13,6 +13,10 @@ def login(request):
     posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
     return render(request, 'registration/login.html', {})
 
+def logout(request):
+    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
+    return redirect('login')
+
 @login_required
 def post_list(request):
     posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
