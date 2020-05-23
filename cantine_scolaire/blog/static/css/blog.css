@@ -84,7 +84,7 @@ span {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: rgba(41, 165, 200, 0.9);
+    background: rgba(41, 165, 200);
     color: #fff;
     transition: all 0.3s;
     height: 80vh;
@@ -158,8 +158,8 @@ span {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #ffff;
+    background: #ff6c40;
 }
 
 #sidebar ul li a i {
@@ -170,6 +170,11 @@ span {
 a[aria-expanded="true"] {
     color: #fff;
     background: #246176;
+}
+
+#sidebar ul li.active>a:hover {
+    color: #fff;
+    background: #ff6c40;
 }
 
 a[data-toggle="collapse"] {
@@ -219,6 +224,7 @@ footer {
 
 .btn {
     background-color: #246176;
+    color: #fff;
 }
 
 .btn:hover {
