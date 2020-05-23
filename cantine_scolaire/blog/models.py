@@ -21,3 +21,9 @@ class Post(models.Model):
     def __str__(self):
         return self.titre
 
+
+    class Meta : 
+        permissions = (
+                ("supprimer_post", "description supprimer un post"),
+                ("dashboard_admin", "accès django administrateur"),
+            )

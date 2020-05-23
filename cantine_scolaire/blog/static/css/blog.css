@@ -1,5 +1,9 @@
 /* Fonts */
 
+body {
+    height: 100vh;
+}
+
 @font-face {
     font-family: 'Montserrat_Regular';
     src: url(../Fonts/Montserrat-Regular.ttf);
@@ -22,6 +26,11 @@
 
 .logo_facecook img {
     height: 80px;
+}
+
+h1 {
+    font-family: 'BigJohn';
+    font-size: 24px;
 }
 
 
@@ -78,6 +87,7 @@ span {
     background: rgba(41, 165, 200, 0.9);
     color: #fff;
     transition: all 0.3s;
+    height: 80vh;
 }
 
 #sidebar.active {
@@ -205,6 +215,14 @@ ul.CTAs a {
 
 footer {
     border-top: 2px solid white;
+}
+
+.btn {
+    background-color: #246176;
+}
+
+.btn:hover {
+    background-color: rgba(41, 165, 200);
 }
 
 

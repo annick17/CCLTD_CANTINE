@@ -7,7 +7,6 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields =  '__all__'
-        image = forms.ImageField(
-        widget=forms.FileInput(attrs={
-        })
-    )
+        image = forms.ImageField(widget=forms.FileInput(attrs={}))
+        
+    

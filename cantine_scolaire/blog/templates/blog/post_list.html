@@ -1,15 +1,12 @@
 {% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
-<div>
 
-    <a href="{% url 'post_new' %}" class="top-menu">Ajouter</a>
-</div>
 
-<div class="post">
-    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h2>
-    <p><i>Publié par : {{ post.auteur|linebreaksbr }}</i></p>
-    <img src="{{ post.image.url }}" alt="photo recette">
-    <p>Publié le : {{ post.date_de_publication }}</p>
-    <p>{{ post.accroche|linebreaksbr }}
-        <a href="{% url 'post_detail' pk=post.pk %}"></a><i>...En savoir plus...</i></a>
-    </p>
+<div class="card" style="width: 22rem;">
+
+    <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h5>
+        <img class="card-img-top" src="{{ post.image.url }}" alt="photo recette">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Go somewhere</a>
+    </div>
 </div>{% endfor %} {% endblock %}
