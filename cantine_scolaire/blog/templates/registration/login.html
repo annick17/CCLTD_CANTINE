@@ -1,21 +1,29 @@
-{% extends "blog/base.html" %} {% block content %} {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% extends "blog/base.html" %} {% block content %}
+<div class="card border-dark mb-3 text-center">
+    <div class="card-header border-dark">Afin d'accéder au site, veuillez-vous connecter. {% if form.errors %}
+        <div class="card-header">Votre nom d'utilisateur ou votre mot de passe ne sont pas corrects. Veuillez rééssayer.{% endif %}
+            <div class="card-body text-dark text-center">
+                <form method="post" action="{% url 'login' %}">
+                    <div class="form-group d-flex justify-content-center col-12">
+                        {% csrf_token %}
+                        <table class="col-12">
+                            <tr>
+                                <td>{{ form.username.label_tag }}</td>
+                                <td>{{ form.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.password.label_tag }}</td>
+                                <td>{{ form.password }}</td>
+                            </tr>
+                        </table>
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-    </table>
 
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
+                    </div><input class="input" type="submit" value="login" />
+                    <input class="input" type="hidden" name="next" value="{{ next }}" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

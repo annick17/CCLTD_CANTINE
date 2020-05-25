@@ -69,7 +69,12 @@ span {
 }
 
 
-/* text du contenu*/
+/* login */
+
+#id_username,
+#id_password {
+    width: 100%;
+}
 
 
 /* ---------------------------------------------------
@@ -228,7 +233,7 @@ footer {
 }
 
 .btn:hover {
-    background-color: rgba(41, 165, 200);
+    background-color: #ff6c40;
 }
 
 

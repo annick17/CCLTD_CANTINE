@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
 
 
-<div class="card">
+<div class="card ">
 
     <div class="card-body">
-        <h2 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h2>
+        <h2 class="card-header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h2>
         <img class="card-img-top" src="{{ post.image.url }}" alt="photo recette">
         <p class="card-text">{{ post.accroche|linebreaksbr }}</p>
-        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Voir plus ...</a>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn">Voir plus ...</a>
     </div>
 </div>{% endfor %} {% endblock %}<p

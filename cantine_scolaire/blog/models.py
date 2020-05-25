@@ -8,14 +8,14 @@ from django.utils import timezone
 class Post(models.Model):
     titre = models.CharField(max_length=200)
     auteur = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    date_de_création = models.DateTimeField(auto_now_add=True)
+    date_de_creation = models.DateTimeField(auto_now_add=True)
     date_de_publication = models.DateTimeField(auto_now=True)
     accroche = models.CharField(max_length=200, default=True)
     texte = models.TextField()
     image = models.ImageField(upload_to = 'images/')
 
     def publish(self):
-        self.date_de_publication = timezone.now()
+        self.date_de_creation = timezone.now()
         self.save()
 
     def __str__(self):
