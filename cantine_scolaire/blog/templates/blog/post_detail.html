@@ -6,8 +6,8 @@
         <h2 class="card-title">{{ post.titre }}</h2>
         <p><i>Publié par : {{ post.auteur|linebreaksbr }}</i></p>
 
-        <p><i>Date de création : {{ post.date_de_creation }}</i></p>
-        <p><i>Dernière modification : {{ post.date_de_publication }}</i></p>
+        <p><i>Date de création : {{ post.date_de_creation | date:"d M  Y, h:i a" }}</i></p>
+        <p><i>Dernière modification : {{ post.date_de_publication | date:"d M  Y, h:i a" }}</i></p>
         <img class="card-img-top" src="{{ post.image.url }}" alt="photo recette">
         <p>{{ post.texte|linebreaksbr }}</p>
 
