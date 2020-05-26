@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %} {% block content %}
-<div class="post">
-    <!-- <div class="card" style="width: 22rem;"> -->
 
+<!-- Posts -->
+
+<div class="post">
     <div class="card-body">
         <h2 class="card-title">{{ post.titre }}</h2>
         <p><i>Publié par : {{ post.auteur|linebreaksbr }}</i></p>
@@ -17,5 +18,20 @@
     </div>
 </div>
 
+<!-- Commentaires -->
 
-{% endblock %}
+
+<hr> {% for comment in post.comments.all %}
+<div class="comment">
+    <div class="card-body">
+        <h4 class="card-title">{{ comment.auteur }}</h4>
+        <div class="date">{{ comment.date_de_creation | date:"d M Y, h:i a" }}</div>
+        <p>{{ comment.texte|linebreaks }}</p>
+        {% if perms.blog.supprimer_comment %} <a class="btn btn-default" href="{% url 'comment_remove' pk=post.pk %}">Supprimer</a> {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endfor %} {% endblock %}

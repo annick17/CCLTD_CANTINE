@@ -27,3 +27,19 @@ class Post(models.Model):
                 ("supprimer_post", "description supprimer un post"),
                 ("dashboard_admin", "accès django administrateur"),
             )
+
+
+
+class Comment(models.Model):
+    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    auteur = models.CharField(max_length=200)
+    texte = models.TextField()
+    date_de_creation = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.texte
