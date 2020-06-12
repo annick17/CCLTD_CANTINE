@@ -1,8 +1,10 @@
-/* Fonts */
-
 body {
     height: 100vh;
+    background-color: rgb(241, 238, 238);
 }
+
+
+/* Fonts */
 
 @font-face {
     font-family: 'Montserrat_Regular';
@@ -12,13 +14,21 @@ body {
 }
 
 @font-face {
+    font-family: 'SlimJoe';
+    src: url(../fonts/slim_joe.otf);
+}
+
+@font-face {
     font-family: 'BigJohn';
     src: url(../fonts/BigJohn.otf);
 }
 
-@font-face {
+#face {
+    font-family: 'BigJohn';
+}
+
+#cook {
     font-family: 'SlimJoe';
-    src: url(../fonts/slim_joe.otf);
 }
 
 
@@ -31,6 +41,14 @@ body {
 h1 {
     font-family: 'BigJohn';
     font-size: 24px;
+}
+
+
+/* bouton de recherche */
+
+#bouton_search {
+    background-color: #ff6c40;
+    color: #fff;
 }
 
 
@@ -77,6 +95,15 @@ span {
 }
 
 
+/* connexion_deconnexion */
+
+.log {
+    width: 20px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -92,7 +119,7 @@ span {
     background: rgba(41, 165, 200);
     color: #fff;
     transition: all 0.3s;
-    height: 80vh;
+    height: 100%;
 }
 
 #sidebar.active {
@@ -212,6 +239,16 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
+.recette {
+    width: 25px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.list {
+    margin-bottom: 10px;
+}
+
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -234,6 +271,20 @@ footer {
 
 .btn:hover {
     background-color: #ff6c40;
+}
+
+
+/* ----------Formulaire commentaire----------- */
+
+#id_texte {
+    width: 100%;
+}
+
+
+/* -----------Formulaire création ------------- */
+
+#id_image {
+    width: 100%;
 }
 
 
@@ -260,7 +311,6 @@ footer {
     #sidebar.active {
         margin-left: 0 !important;
     }
-    #sidebar .sidebar-header h3,
     #sidebar .CTAs {
         display: none;
     }
@@ -312,5 +362,8 @@ footer {
         display: flex;
         justify-content: center;
         font-size: x-large;
+    }
+    .img-fluid {
+        width: 100%;
     }
 }

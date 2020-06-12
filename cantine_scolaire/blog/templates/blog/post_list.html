@@ -1,24 +1,36 @@
-{% extends 'blog/base.html' %} {% block content %} {% for post in posts %}
+{% extends 'blog/base.html' %} {% load static %} {% block content %} {% for post in posts %}
 
 
 <div class="card ">
 
     <div class="card-body">
         <h2 class="card-header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titre }}</a></h2>
+        <p><i>{{ post.auteur }}</i></p>
         <img class="card-img-top" src="{{ post.image.url }}" alt="photo recette">
-        <p class="card-text">{{ post.accroche|linebreaksbr }}</p>
+        <p class="card-text">{{ post.accroche }}</p>
         <div class="d-flex justify-content-center col-12">
-            <div class="row">
-                <div class="col-6">
-                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn">Voir plus ...</a>
-                </div>
-                <div class="col-6">
-                    <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn"> Commentaire</a>
-                </div>
+            <div class="col-3 d-none d-md-block">
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-outline-secondary">Voir plus...</a>
             </div>
+            <div class="col-3 d-block d-md-none">
+                <a href="{% url 'post_detail' pk=post.pk %}"><img src="{% static 'images/kitchen.png' %}" class="list"></a>
+            </div>{% if perms.blog.ajouter_comment %}
+            <div class="col-3 d-none d-md-block">
+                <a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-outline-secondary"> Commentaire</a>
+            </div>
+            <div class="col-3 d-block d-md-none">
+                <a href="{% url 'add_comment_to_post' pk=post.pk %}"><img src="{% static 'images/comment.png' %}" class="list"></a>
+            </div> {% endif %} {% if perms.blog.supprimer_post %}
+            <div class="col-3 d-none d-md-block">
+                <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-outline-secondary">Supprimer</a>
+            </div>
+            <div class="col-3 d-block d-md-none">
+                <a href="{% url 'post_remove' pk=post.pk %}"><img src="{% static 'images/trash.png' %}" class="list"></a>
+            </div> {% endif %}
         </div>
 
         <div class="card-footer"><a href="{% url 'post_detail' pk=post.pk %}">Commentaire : {{ post.comments.count }}</a></div>
+
     </div>
 
 

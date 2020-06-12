@@ -10,7 +10,7 @@ class Post(models.Model):
     auteur = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_de_creation = models.DateTimeField(auto_now_add=True)
     date_de_publication = models.DateTimeField(auto_now=True)
-    accroche = models.CharField(max_length=200, default=True)
+    accroche = models.CharField(max_length=200)
     texte = models.TextField()
     image = models.ImageField(upload_to = 'images/')
 
@@ -26,6 +26,8 @@ class Post(models.Model):
         permissions = (
                 ("supprimer_post", "description supprimer un post"),
                 ("dashboard_admin", "accès django administrateur"),
+                ("modifier_post", "modifier un post"),
+                ("ajouter_post", "ajouter un post"),
             )
 
 
@@ -43,3 +45,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.texte
+
+
+    class Meta : 
+        permissions = (
+                ("ajouter_comment", "ajouter un commentaire"),
+                ("supprimer_comment", "supprimer un commentaire"),
+            )

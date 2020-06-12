@@ -5,30 +5,32 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
 
-from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
 
 def login(request):
-    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
+    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('-date_de_publication')
     return render(request, 'registration/login.html', {})
 
 def logout(request):
-    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
+    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('-date_de_publication')
     return redirect('login')
 
-@login_required
+
+
+
 def post_list(request):
-    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('date_de_publication')
+    posts = Post.objects.filter(date_de_publication__lte=timezone.now()).order_by('-date_de_publication')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-@login_required
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-@login_required
+
 def post_new(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -40,7 +42,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
-@login_required
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -56,7 +58,7 @@ def post_edit(request, pk):
 
 
 
-@login_required
+
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
@@ -79,7 +81,7 @@ def add_comment_to_post(request, pk):
 
 
 
-@login_required
+
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()

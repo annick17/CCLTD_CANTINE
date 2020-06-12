@@ -1,9 +1,7 @@
 {% extends 'blog/base.html' %} {% block content %}
-
 <div class="card-body text-info">
     <h2>Laisser votre commentaire</h2>
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %} {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Enregistrer</button>
+        <button type="submit" class="save btn btn-outline-secondary">Enregistrer</button>
     </form>
-</div>
-{% endblock %}
+</div> {% endblock %}
