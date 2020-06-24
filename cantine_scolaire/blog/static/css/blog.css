@@ -44,6 +44,13 @@ h1 {
 }
 
 
+/* logo ccltd */
+
+#logo_ccltd {
+    width: 250px;
+}
+
+
 /* bouton de recherche */
 
 #bouton_search {
@@ -364,6 +371,19 @@ footer {
         font-size: x-large;
     }
     .img-fluid {
+        width: 34%;
+    }
+    #footer {
+        font-size: 70%;
+    }
+    #content {
+        padding: 0;
+    }
+    .content {
+        padding: 0;
+    }
+    #id_titre,
+    #id_accroche {
         width: 100%;
     }
 }
